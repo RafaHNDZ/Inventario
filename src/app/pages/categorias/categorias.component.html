@@ -1,0 +1,111 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Categorias
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+          <li><a routerLink="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a >Mantenimiento</a></li>
+          <li class="active">Categorias</li>
+        </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12 col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Bordered Table</h3>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i>
+                  </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered" style="height: 340px;">
+                <tbody>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Categoria</th>
+                    <th>Imagen</th>
+                    <th>Opciones</th>
+                 </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Modal Registro -->
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog  modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Registro de articulos</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">            
+            <form>
+              <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" placeholder="Nombre">
+                </div>
+              </div>     
+              <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                  <label>Descripción</label>
+                  <input type="text" class="form-control" placeholder="Descripción">
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label>Detalles</label>
+                  <textarea class="form-control" rows="5" style="resize: none"></textarea>
+                </div>
+              </div>  
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label>Categoria</label>
+                  <select class="form-control">
+                    <option value="">Ninguna</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label>Imagen</label>
+                  <input type="file" (change)="fileChange($event)">
+                  <p class="help-block">Example block-level help text here.</p>
+                </div>
+              </div>
+              <div class="col-md-12" *ngIf='url'>
+                  <img [src]="url" width="350" height="250">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-success" [disabled]="!entradaForm.valid">Registrar</button>
+        </div>     
+      </div>
+    </div>
+  </div>

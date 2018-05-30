@@ -1,0 +1,233 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Registro de entrada
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+          <li><a routerLink="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li><a >Compras</a></li>
+          <li><a routerLink="/entradas">Entradas</a></li>
+          <li class="active">Nuevo</li>
+        </ol>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12 col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Formulario de Registro</h3>
+              <div class="box-tools pull-right">
+                <!--
+                  <button type="button" class="btn btn-sm btn-primary" (click)="addItem()" data-toggle="tooltip" data-placement="top" title="Añadir Articulo">
+                    <i class="fa fa-cart-plus"></i>
+                  </button>
+                -->
+                <button type="button" class="btn btn-sm btn-flat btn-primary" data-toggle="modal" data-target="#modal-busqueda-articulo">
+                  <i class="fa fa-search"></i>
+                   Buscar Articulo
+                </button>
+                </div>
+            </div>
+            <div class="box-body">
+              <form [formGroup]="entradaForm">
+                <!-- Detalles generales del ingreso -->
+                <div class="row">
+                  <div class="col-xs-12 col-md-6 col-lg-3">
+                    <label>Sucursal</label>
+                    <!--
+                    <div class="input-group">
+                      <input type="text" class="form-control" readonly>
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                    -->
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option value="">Default</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-6 col-lg-3">
+                    <label>Proveedor</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" readonly>
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="col-xs-12 col-md-6 col-lg-3">
+                    <label>Empleado</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" readonly>
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  -->
+                  <div class="col-xs-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                      <label>Fecha</label>
+                      <input class="form-control" type="date" readonly>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-6 col-lg-3">
+                    <label>IVA</label>
+                    <div class="input-group">
+                      <input type="number" value="18" class="form-control" readonly>
+                      <span class="input-group-addon">%</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Lista de productos del ingreso -->
+                <table class="table table-bordered table-responsive">
+                  <thead>
+                    <tr>
+                      <th>Articulo</th>
+                      <th>Serie</th>
+                      <th>Codigo</th>
+                      <th>Cant. Ingreso</th>
+                      <th>P. Compra</th>
+                      <th>P.V. Publico</th>
+                      <th>P.V. Distribuidor</th>
+                      <th>Opciones</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="articulos.length > 0">
+                    <tr *ngFor="let item of articulos; let i = index;">
+                      <td>{{item.producto}}</td>
+                      <td><input type="text" class="form-control" [value]="item.serie"></td>
+                      <td><input type="text" class="form-control" [value]="item.codigo"></td>
+                      <td><input type="text" class="form-control" [value]="item.stock_ingreso"></td>
+                      <td><input type="text" class="form-control" [value]="item.precio_compra"></td>
+                      <td><input type="text" class="form-control" [value]="item.precio_venta_publico"></td>
+                      <td><input type="text" class="form-control" [value]="item.precio_venta_distribuidor"></td>
+                      <td>
+                        <button class="btn btn-danger" (click)="removeItem(i)"><i class="fa fa-trash"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!--
+                <div class="row">
+                  <div formArrayName="items" *ngFor="let item of entradaForm.get('items').controls; let i = index;">
+                    <div [formGroupName]="i" class="form-group" style="padding-bottom: 30px;">
+                      <div class="col-xs-12 col-md-6 col-lg-2">
+                        <input type="text" class="form-control" placeholder="Producto" formControlName="producto">
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-1">
+                        <input type="text" class="form-control" placeholder="Serie" formControlName="serie">
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-2">
+                        <input type="text" class="form-control" placeholder="Codigo" formControlName="codigo">
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-1">
+                        <input type="number" class="form-control" placeholder="N. Ingreso" formControlName="stock_ingreso">
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-1">
+                        <input type="text" class="form-control" placeholder="Precio" formControlName="precio_compra">
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-2">
+                        <input type="text" class="form-control" placeholder="P.C.P" formControlName="precio_venta_publico">
+                      </div>  
+                      <div class="col-xs-12 col-md-6 col-lg-2">
+                        <input type="text" class="form-control" placeholder="P.C.D" formControlName="precio_venta_distribuidor">
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-1">
+                        <button class="btn btn-danger" (click)="removeItem(i)">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </div>                
+                    </div>
+                  </div>
+                </div>
+              -->
+              </form>
+            </div>
+            <div class="box-footer clearfix">
+              <button class="btn btn-danger pull-left">
+                Cancelar
+              </button>
+              <button class="btn btn-success pull-right">
+                Registrar
+              </button>
+            </div>
+          </div>
+          {{entradaForm.value | json}}
+          {{articulos | json}}
+        </div>
+      </div>
+    </section>
+  </div>
+
+<!-- Modal Busqueda de producto -->
+  <!-- Modal Registro -->
+  <div class="modal fade" id="modal-busqueda-articulo">
+    <div class="modal-dialog  modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!--
+          <h4 class="modal-title">Busqueda de Articulos</h4>
+          -->
+          <div class="box-tools pull-right">
+            <div class="input-group input-group-sm" style="width: 250px;">
+              <input type="text" name="table_search" class="form-control" placeholder="Buscar">
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive no-padding">
+            <table class="table table-hover">
+              <tbody><tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Reason</th>
+              </tr>
+              <tr>
+                <td>183</td>
+                <td>John Doe</td>
+                <td>11-7-2014</td>
+                <td><span class="label label-success">Approved</span></td>
+                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+              </tr>
+              <tr>
+                <td>219</td>
+                <td>Alexander Pierce</td>
+                <td>11-7-2014</td>
+                <td><span class="label label-warning">Pending</span></td>
+                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+              </tr>
+              <tr>
+                <td>657</td>
+                <td>Bob Doe</td>
+                <td>11-7-2014</td>
+                <td><span class="label label-primary">Approved</span></td>
+                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+              </tr>
+              <tr>
+                <td>175</td>
+                <td>Mike Doe</td>
+                <td>11-7-2014</td>
+                <td><span class="label label-danger">Denied</span></td>
+                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+              </tr>
+            </tbody></table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-success">Registrar</button>
+        </div>     
+      </div>
+    </div>
+  </div>

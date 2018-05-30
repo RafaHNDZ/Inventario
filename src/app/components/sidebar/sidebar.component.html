@@ -31,7 +31,7 @@
               <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
           </li>
-          <li class="treeview">
+          <li class="treeview" routerLinkActive="active menu-open">
             <a href="#">
               <i class="fa fa-gears"></i>
               <span>Mantenimiento</span>
@@ -40,13 +40,21 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> General</a></li>
-              <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Sucursal</a></li>
-              <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-              <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Empleados</a></li>
+              <li routerLinkActive="active">
+                <a routerLink="/general"><i class="fa fa-circle-o"></i> General</a>
+              </li>
+              <li routerLinkActive="active">
+                <a routerLink="/sucursal"><i class="fa fa-circle-o"></i> Sucursal</a>
+              </li>
+              <li routerLinkActive="active">
+                <a routerLink="/usuarios"><i class="fa fa-circle-o"></i> Usuarios</a>
+              </li>
+              <li routerLinkActive="active">
+                <a routerLink="/empleados"><i class="fa fa-circle-o"></i> Empleados</a>
+              </li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="treeview" routerLinkActive="active menu-open">
             <a href="#">
               <i class="fa fa-archive"></i>
               <span>Almacén</span>
@@ -55,11 +63,15 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Artículos</a></li>
-              <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Categorías</a></li>
+              <li routerLinkActive="active">
+                <a routerLink="/articulos"><i class="fa fa-circle-o"></i> Artículos</a>
+              </li>
+              <li routerLinkActive="active">
+                <a routerLink="/categorias"><i class="fa fa-circle-o"></i> Categorías</a>
+              </li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="treeview" routerLinkActive="active menu-open">
             <a href="#">
               <i class="fa fa-arrow-circle-right"></i>
               <span>Compras</span>
@@ -68,7 +80,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+              <li routerLinkActive="active">
+                <a routerLink="/entradas"><i class="fa fa-circle-o"></i> Entradas</a>
+              </li>
               <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Proveedores</a></li>
             </ul>
           </li>
