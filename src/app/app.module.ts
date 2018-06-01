@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 //Complementos
 import { ChartsModule } from 'ng2-charts'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //Rutas
 import { routes } from './app.routes';
@@ -28,6 +30,9 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { EntradasComponent } from './pages/entradas/entradas.component';
 import { RegistroEntradaComponent } from './pages/registro-entrada/registro-entrada.component';
 
+//Services
+import { ArticuloService } from './services/articulo.service';
+
 
 @NgModule({
   declarations: [
@@ -51,10 +56,13 @@ import { RegistroEntradaComponent } from './pages/registro-entrada/registro-entr
     ChartsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    NgbModule.forRoot()
   ],
   providers: [
-    FormBuilder
+    FormBuilder,
+    ArticuloService
   ],
   bootstrap: [AppComponent]
 })

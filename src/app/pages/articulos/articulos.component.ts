@@ -52,4 +52,8 @@ export class ArticulosComponent implements OnInit {
     }
   }
 
+  submit(form){
+    console.log(form);
+  }
+
 }

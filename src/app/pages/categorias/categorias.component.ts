@@ -12,4 +12,8 @@ export class CategoriasComponent implements OnInit {
   ngOnInit() {
   }
 
+  fileChange(file): void {
+    
+  }
+
 }
